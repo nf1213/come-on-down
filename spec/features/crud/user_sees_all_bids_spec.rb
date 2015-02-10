@@ -14,6 +14,9 @@ So that I don't go out of my everloving mind from cabin fever
 
   scenario 'User sees all of the prizes', focus: true do
 
+    user = FactoryGirl.create(:user)
+    prize = FactoryGirl.create(:prize)
+
     visit prizes_path
     expect(page).to have_content prize.name
     expect(page).to have_content prize.price
