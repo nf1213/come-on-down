@@ -25,7 +25,7 @@ So that I can bid and come closest to the actual retail price without going over
     expect(page).to have_content 'Place your bid'
   end
 
-  scenario 'User can bid on prize', focus: true do
+  scenario 'User can bid on prize' do
 
     user = FactoryGirl.create(:user)
     prize = FactoryGirl.create(:prize)
@@ -33,8 +33,8 @@ So that I can bid and come closest to the actual retail price without going over
 
     visit prize_path(prize)
 
-    fill_in 'Bid on this prize', with: bid.amount
-    click_on 'Enter my bid!'
+    fill_in 'Amount', with: bid.amount
+    click_on 'Bid on this prize!'
 
     expect(page).to have_content 'You have successfully placed your bid!'
   end
