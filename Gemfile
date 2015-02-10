@@ -10,7 +10,8 @@ gem 'jquery-rails'
 gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'devise'
-gem 'foundation-rails'em 'rails_12factor', group: :production
+gem 'foundation-rails'
+gem 'rails_12factor', group: :production
 gem 'simple_form'
 
 group :development, :test do
