@@ -10,7 +10,7 @@ FactoryGirl.define do
 
   factory :prize do
     name "A new arbor!"
-    price 725
+    price nil
 
     user
   end
