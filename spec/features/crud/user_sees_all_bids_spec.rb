@@ -12,7 +12,7 @@ So that I don't go out of my everloving mind from cabin fever
 # [x] I can see who won the prizes that are closed
 # [x] I can see the prize price of the prizes that are closed
 
-  scenario 'User sees all of the prizes', focus: true do
+  scenario 'User sees all of the prizes' do
 
     user = FactoryGirl.create(:user)
     prize = FactoryGirl.create(:prize)
