@@ -8,6 +8,6 @@ class PrizesController < ApplicationController
   def show
     @prize = Prize.find(params[:id])
     @bid = Bid.new
-    @bids = Bid.all
+    @bids = @prize.bids
   end
 end
