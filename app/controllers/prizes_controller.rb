@@ -1,7 +1,8 @@
 class PrizesController < ApplicationController
 
   def index
-    @prizes = Prize.all.order(created_at: :desc)
+    @open_prizes = Prize.where("open = true").order(created_at: :desc)
+    @closed_prizes = Prize.where("open = false").order(created_at: :desc)
   end
 
   def show

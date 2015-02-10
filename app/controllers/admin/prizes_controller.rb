@@ -19,6 +19,7 @@ class Admin::PrizesController < ApplicationController
     @prize.update(prize_params)
     if @prize.save
       notice = @prize.find_winner
+      @prize.update(open: false)
       redirect_to prize_path(@prize), notice: notice
     else
       redirect_to prize_path(@prize), alert: "Invalid input"
