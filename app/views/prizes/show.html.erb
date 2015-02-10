@@ -2,6 +2,7 @@
   <div class="columns small-12">
     <% if !@prize.open %>
       <h1><%= @prize.find_winner %></h1>
+      <h2>Actual price: <%= @prize.price %></h1>
     <% end %>
 
     <%= @prize.name %>
