@@ -1,9 +1,12 @@
 <div class="row">
   <div class="columns small-12">
-    <h1>Bid on this fabulous prize!</h1>
+    <% if !@prize.open %>
+      <h1><%= @prize.find_winner %></h1>
+    <% end %>
 
     <%= @prize.name %>
     <% if @prize.open %>
+    <h1>Bid on this fabulous prize!</h1>
       <% if current_user && current_user.admin %>
         <%= simple_form_for [:admin, @prize] do |f| %>
           <%= f.input :price %>
@@ -32,10 +35,10 @@
 
     <h3>Other contestant bids</h3>
       <% @bids.each do |bid| %>
-      <ul>
-      <li><%= bid.user.username %></li>
-      <li><%= bid.amount %></li>
-    </ul>
+        <ul>
+          <li><%= bid.user.username %></li>
+          <li><%= bid.amount %></li>
+        </ul>
       <% end %>
   </div>
 </div>
