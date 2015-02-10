@@ -11,10 +11,29 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150209231717) do
+ActiveRecord::Schema.define(version: 20150210004911) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "bids", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "prize_id"
+    t.integer  "amount"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "bids", ["prize_id", "amount"], name: "index_bids_on_prize_id_and_amount", unique: true, using: :btree
+  add_index "bids", ["user_id", "prize_id"], name: "index_bids_on_user_id_and_prize_id", unique: true, using: :btree
+
+  create_table "prizes", force: :cascade do |t|
+    t.string   "name"
+    t.integer  "price"
+    t.integer  "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
