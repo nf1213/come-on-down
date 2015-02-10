@@ -11,6 +11,17 @@
         <% end %>
       <% end %>
 
+      <% if @bid.errors.any? %>
+      <div id="error_explanation">
+      <h2><%= "#{@bid.errors.count} error(s) prevented your bid from being saved" %></h2>
+      <ul>
+      <% @bid.errors.full_messages.each do |bid| %>
+      <li><%= bid %></li>
+      <% end %>
+      </ul>
+      </div>
+      <% end %>
+
       <h3>Place your bid!</h3>
       <%= simple_form_for [@prize, @bid] do |f| %>
         <%= f.input :amount, as: :integer %>
@@ -18,5 +29,13 @@
         <%= f.button :submit, "Bid on this prize!" %>
       <% end %>
     <% end %>
+
+    <h3>Other contestant bids</h3>
+      <% @bids.each do |bid| %>
+      <ul>
+      <li><%= bid.user.username %></li>
+      <li><%= bid.amount %></li>
+    </ul>
+      <% end %>
   </div>
 </div>
