@@ -1,8 +1,8 @@
-<h1>Come on down and be a contestant on The Price Is Right!</h1>
+<h3>Welcome to contestants' row! Bid on fabulous prizes!</h3>
 
 <% @prizes.each do |prize| %>
 <ul>
-  <li><%= prize.name %></li>
+  <li><%= link_to prize.name, prize_path(prize) %></li>
   <li><%= prize.price %></li>
   <li><%= prize.user.username %></li>
 </ul>
