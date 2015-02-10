@@ -6,5 +6,7 @@ class PrizesController < ApplicationController
 
   def show
     @prize = Prize.find(params[:id])
+    @bid = Bid.new
+    @bids = @prize.bids
   end
 end

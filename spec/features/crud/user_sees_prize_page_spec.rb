@@ -33,7 +33,7 @@ So that I can bid and come closest to the actual retail price without going over
 
     visit prize_path(prize)
 
-    fill_in 'Bid on this prize', with bid.amount
+    fill_in 'Bid on this prize', with: bid.amount
     click_on 'Enter my bid!'
 
     expect(page).to have_content 'You have successfully placed your bid!'

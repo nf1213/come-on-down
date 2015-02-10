@@ -3,3 +3,11 @@
 <%= @prize.name %>
 
 <h3>Place your bid!</h3>
+
+  <% form_for [@prize, @bid] do |f| %>
+
+  <%= f.number_field :bid %>
+
+   <%= f.submit "Bid on prize" %>
+
+   <% end %>
