@@ -1,4 +1,9 @@
 class Prize < ActiveRecord::Base
+  belongs_to :user
+  has_many :bids
+
+  validates :name,
+    presence: true
 
   def find_winner
     bids = self.bids

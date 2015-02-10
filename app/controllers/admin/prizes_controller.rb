@@ -1,6 +1,6 @@
 class Admin::PrizesController < ApplicationController
   before_action :authorize!
-  
+
   def new
     @prize = Prize.new
   end
@@ -10,7 +10,7 @@ class Admin::PrizesController < ApplicationController
     if @prize.save
       redirect_to prize_path(@prize), notice: "Prize created"
     else
-      render :show
+      render :new
     end
   end
 
@@ -21,7 +21,7 @@ class Admin::PrizesController < ApplicationController
       notice = @prize.find_winner
       redirect_to prize_path(@prize), notice: notice
     else
-      render :show
+      redirect_to prize_path(@prize), alert: "Invalid input"
     end
   end
 
