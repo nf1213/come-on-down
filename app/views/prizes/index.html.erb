@@ -1,9 +1,14 @@
-<h3>Welcome to contestants' row! Bid on fabulous prizes!</h3>
+<div class="row">
+  <div class="columns small-12">
+    <h3>Welcome to contestants' row! Bid on fabulous prizes!</h3>
 
-<% @prizes.each do |prize| %>
-<ul>
-  <li><%= link_to prize.name, prize_path(prize) %></li>
-  <li><%= prize.price %></li>
-  <li><%= prize.user.username %></li>
-</ul>
-<% end %>
+    <% if current_user && current_user.admin %>
+      <%= link_to "New Prize", new_admin_prize_path, class: "button success" %>
+    <% end %>
+    <ul>
+    <% @prizes.each do |prize| %>
+      <li><%= link_to prize.name, prize_path(prize) %></li>
+    <% end %>
+    </ul>
+  </div>
+</div>

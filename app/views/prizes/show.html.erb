@@ -1,14 +1,22 @@
-<h1>Bid on this fabulous prize!</h1>
+<div class="row">
+  <div class="columns small-12">
+    <h1>Bid on this fabulous prize!</h1>
 
-<%= @prize.name %>
+    <%= @prize.name %>
 
-<h3>Place your bid!</h3>
+    <% if current_user && current_user.admin %>
+      <%= simple_form_for [:admin, @prize] do |f| %>
+        <%= f.input :price %>
+        <%= f.hidden_field :user_id, value: current_user.id %>
+        <%= f.button :submit %>
+      <% end %>
+    <% end %>
 
-  <%= form_for [@prize, @bid] do |f| %>
-
-  <%= f.label :amount %>
-  <%= f.number_field :amount %>
-
-  <%= f.submit "Bid on this prize!" %>
-
-  <% end %>
+    <h3>Place your bid!</h3>
+    <%= form_for [@prize, @bid] do |f| %>
+      <%= f.label :amount %>
+      <%= f.number_field :amount %>
+      <%= f.submit "Bid on this prize!" %>
+    <% end %>
+  </div>
+</div>
