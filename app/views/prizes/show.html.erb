@@ -3,20 +3,20 @@
     <h1>Bid on this fabulous prize!</h1>
 
     <%= @prize.name %>
-
-    <% if current_user && current_user.admin %>
-      <%= simple_form_for [:admin, @prize] do |f| %>
-        <%= f.input :price %>
-        <%= f.hidden_field :user_id, value: current_user.id %>
-        <%= f.button :submit %>
+    <% if @prize.open %>
+      <% if current_user && current_user.admin %>
+        <%= simple_form_for [:admin, @prize] do |f| %>
+          <%= f.input :price %>
+          <%= f.button :submit %>
+        <% end %>
       <% end %>
-    <% end %>
 
-    <h3>Place your bid!</h3>
-    <%= form_for [@prize, @bid] do |f| %>
-      <%= f.label :amount %>
-      <%= f.number_field :amount %>
-      <%= f.submit "Bid on this prize!" %>
+      <h3>Place your bid!</h3>
+      <%= simple_form_for [@prize, @bid] do |f| %>
+        <%= f.input :amount, as: :integer %>
+        <%= f.hidden_field :user_id, value: current_user.id %>
+        <%= f.button :submit, "Bid on this prize!" %>
+      <% end %>
     <% end %>
   </div>
 </div>

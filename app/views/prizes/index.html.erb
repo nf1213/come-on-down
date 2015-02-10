@@ -5,10 +5,18 @@
     <% if current_user && current_user.admin %>
       <%= link_to "New Prize", new_admin_prize_path, class: "button success" %>
     <% end %>
+    <h4>Prizes open for bidding</h4>
     <ul>
-    <% @prizes.each do |prize| %>
+    <% @open_prizes.each do |prize| %>
       <li><%= link_to prize.name, prize_path(prize) %></li>
     <% end %>
+    </ul>
+
+    <h4>Past Prizes</h4>
+    <ul>
+      <% @closed_prizes.each do |prize| %>
+        <li><%= link_to " #{prize.user.username} won #{prize.name}", prize_path(prize) %></li>
+      <% end %>
     </ul>
   </div>
 </div>
