@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  root 'homes#index'
+  root 'prizes#index'
   devise_for :users
 
   resources :prizes, only: [:index, :show, :new, :create] do
